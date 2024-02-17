@@ -1,0 +1,263 @@
+/*Fonte*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono:wght@300&display=swap");
+/*Fonte*/
+
+/*Universal*/
+.universal{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+/*Universal*/
+
+/*Titulo*/
+#titulo-jogos {
+    margin-left: 10%; margin-bottom: 2%;
+    justify-content: center;
+    font-size: x-large;
+    display: inline-flex;
+    position: relative;
+    cursor: default;
+    font-family: Tahoma, Helvetica, Arial, sans-serif;
+}
+
+#titulo-jogos h1::before {
+    content: "";
+    background-color: rgb(118, 163, 200); /*Setar a cor depois*/
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: transform 300ms ease;
+    transform-origin: right;
+    transform: scaleX(0);
+}
+
+#titulo-jogos h1:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+/*Titulo*/
+
+.paragrafo {
+    font-size: 1.2em;
+    margin: 10%; margin-bottom: 5%; margin-top: 0%;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+#rodape {
+    color: white;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: small;
+}
+
+.carousel-inner {
+    margin: 0 auto;
+    height: 50%;
+    width: 100%;
+  }
+
+    /* Categorias */
+.zoom-imagens {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    width: 100%; 
+    height: 300px;
+    margin-bottom: 0.5%;
+    display: block;
+}
+
+.zoom-imagens img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*Isso irá recortar e mostrar apenas a parte central das imagens*/
+    transition: transform 0.3s;
+}
+
+.zoom-imagens:hover img {
+    transform: scale(1.1); /*Isso é o que faz um zoom ao deixar o cursor em cima*/
+}
+
+.categorias-title {
+        -webkit-text-stroke: 0.5px #000;
+        z-index: 2;
+        font-family: Tahoma, Helvetica, Arial, sans-serif;
+        font-size: 4em;
+        color: white;
+        display: flex;
+        position: absolute; /* Isso serve para deixar o título a frente das imagens */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+}
+
+
+    /* Background animado */
+  .gradiente {
+        z-index: -10;
+      background: linear-gradient(45deg, #1b1b1b, rgb(104, 104, 104), #161616, #ffffff);
+      background-size: 300% 300%;
+      animation: colors 15s ease infinite;
+      color: whitesmoke;
+      -webkit-text-stroke: 0.2px #000;
+  }
+  
+  @keyframes colors {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+.video-categorias {
+    height: 20%; 
+    width: 30%; 
+    float: right; 
+    margin: 2%;
+}
+
+/* Navbar que está sendo usada*/
+
+.header {
+    z-index: 10;
+    background: #353434af;
+    padding-inline: 16px;
+    position: fixed;
+    width: 100%;
+}
+
+.nav {
+    max-width: 1280px;
+    height: 70px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav a {
+    height: 100px; width: 100px;
+    text-decoration: none;
+}
+
+.logo {
+    height: 50%; width: 100%; float: center;
+}
+
+.nav-list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-list a {
+    font-size: 18px;
+    color: #ffffff;
+    padding-block: 20%;
+}
+
+.hero {
+    height: calc(100vh - 70px);
+}
+
+.hamburger {
+    display: none;
+    border: none;
+    background: none;
+    border-top: 3px solid #ffffff;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.hamburger::after,
+.hamburger::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #ffffff;
+    margin-top: 5px;
+    position: relative;
+    transition: 0.3s;
+}
+
+@media (max-width: 750px) {
+    .hamburger {
+        display: block;
+        z-index: 1;
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        padding: 0%;
+        background: #353434af;
+        clip-path: circle(100px at 90% -15%);
+        transition: 1s ease-out;
+
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+
+        pointer-events: none;
+    }
+
+    .nav-list a {
+        font-size: 24px;
+        opacity: 0;
+    }
+
+    .nav-list li:nth-child(1) a {
+        transition: 0.5s 0.2s;
+    }
+
+    .nav-list li:nth-child(2) a {
+        transition: 0.5s 0.4s;
+    }
+
+    .nav-list li:nth-child(3) a {
+        transition: 0.5s 0.6s;
+    }
+
+    /* Estilos ativos */
+
+    .nav.active .nav-list {
+        clip-path: circle(1500px at 90% -15%);
+        pointer-events: all;
+    }
+
+    .nav.active .nav-list a {
+        opacity: 1;
+    }
+
+    .nav.active .hamburger {
+        position: fixed;
+        top: 26px;
+        right: 16px;
+        border-top-color: transparent;
+    }
+
+    .nav.active .hamburger::before {
+        transform: rotate(135deg);
+    }
+
+    .nav.active .hamburger::after {
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+}
